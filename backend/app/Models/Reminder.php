@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reminder extends Model {
 
-    public function up() {
-        Schema::create('reminders', function( Blueprint $table ) {
-            $table->id();
-            $table->foreignId('application_id')->constrained()->onDelete('cascade');
-            $table->dateTime('reminder_date');
-            $table->string('type')->nullable();
-            $table->text('notes')->nullable();
-            $table->timestamps();
-        });
+    protected $fillable = ['application_id','reminder_date','type','notes'];
+
+    public function application() {
+        return $this->belongsTo( Application::class );
     }
 
 }
