@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Application extends Model
 {
-    
-   
-
+    public function up() {
+        
+    }
 }
