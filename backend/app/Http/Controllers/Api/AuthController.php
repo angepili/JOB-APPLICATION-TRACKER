@@ -41,7 +41,7 @@ class AuthController extends Controller
         $user = User::where('email', $data['email'])->first();
 
         if (! $user || ! Hash::check($data['password'], $user->password)) {
-            return response()->json(['message' => 'Invalid credentials']);
+            return response()->json(['message' => 'Invalid credentials'], 400);
         }
 
         $token = $user->createToken('job-app-token')->plainTextToken;

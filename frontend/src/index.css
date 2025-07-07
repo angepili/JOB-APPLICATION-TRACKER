@@ -1,3 +1,8 @@
+/* Tailwind 4.x */
+@import 'tailwindcss/base';
+/* @tailwind components non è più supportato in Tailwind 4.x */
+@import 'tailwindcss/utilities';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

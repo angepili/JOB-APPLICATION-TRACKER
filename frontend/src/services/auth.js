@@ -8,9 +8,14 @@ export async function login({email, password}) {
     });
 
     const data = await resp.json();
-
-    if( !resp.ok ) {
-        throw new Error( data.message || 'Errore login' );
+    
+    if (!resp.ok) {
+        // Gestione specifica per errore 400 o "invalid credentials"
+        if (resp.status === 400 || data.message?.toLowerCase().includes('invalid credentials')) {
+            throw new Error('Credenziali non valide. Verifica email e password.');
+        }
+        // Per altri errori
+        throw new Error(data.message || 'Errore durante il login');
     }
 
     return data;
